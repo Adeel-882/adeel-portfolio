@@ -1,0 +1,19 @@
+{
+  "bg": "#02030A",
+  "bg-deep": "#040613",
+  "surface": "#060B1B",
+  "surface-elevated": "#0A1024",
+  "primary": "#1241C7",
+  "primary-bright": "#1748DA",
+  "violet": "#5D48B7",
+  "text": "#F3F0E8",
+  "text-secondary": "#9DA7BE",
+  "text-dim": "#7E89A2",
+  "flare": "#FF6935",
+  "solar": "#F6C77A",
+  "nav": "#D9D9D4",
+  "eyebrow": "#A5ADC1",
+  "wave-shadow": "#050817",
+  "wave-light": "#0A1740",
+  "node-inactive": "#39405B"
+}

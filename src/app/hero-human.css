@@ -1,0 +1,82 @@
+/* Separate transform owners: composition, GSAP scroll, entrance, Three.js relief. */
+.hero {
+  touch-action: pan-y pinch-zoom;
+}
+.hero-human {
+  position: absolute;
+  z-index: 1;
+  width: min(48vw, 780px);
+  aspect-ratio: 0.8;
+  right: -1%;
+  top: 50%;
+  transform: translateY(-48%);
+  pointer-events: none;
+  mask-image:
+    linear-gradient(to bottom, #000 76%, transparent 100%),
+    linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+  mask-composite: intersect;
+}
+.human-scroll,
+.human-enter,
+.spectral-human {
+  width: 100%;
+  height: 100%;
+}
+.spectral-human {
+  position: relative;
+  isolation: isolate;
+}
+.spectral-human canvas,
+.spectral-fallback {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+  user-select: none;
+}
+.spectral-fallback {
+  transform: scale(0.971);
+}
+.spectral-human canvas {
+  visibility: hidden;
+  contain: layout paint size;
+}
+.spectral-human[data-renderer='three'] canvas {
+  visibility: visible;
+}
+.spectral-human[data-renderer='three'] .spectral-fallback {
+  visibility: hidden;
+}
+@media (max-width: 800px) {
+  .hero {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    min-height: 0;
+    max-height: none;
+  }
+  .hero-main {
+    order: 0;
+    padding-bottom: 0;
+  }
+  .hero-human {
+    order: 1;
+    position: relative;
+    flex: none;
+    width: min(94vw, 440px);
+    align-self: center;
+    top: auto;
+    right: auto;
+    transform: none;
+    margin: 8px 0 -6px;
+  }
+  .hero-footer {
+    order: 2;
+    position: relative;
+    inset: auto;
+    margin: 0 var(--gutter) 23px;
+  }
+}

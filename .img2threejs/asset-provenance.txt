@@ -1,0 +1,6 @@
+Input: C:/Users/adeel_utu7nye/Downloads/10625749119185905.jpg
+Mode: built-in image editing tool; background-extraction.
+Output: hero-spectral.webp (optimized transparent cutout).
+
+Prompt:
+Use case: background-extraction. Edit target: the supplied spectral human bust image. Remove ONLY the pale white background to actual alpha transparency. Preserve the exact person silhouette, hair contour, visible ear, head/neck/shoulder proportions, black/navy torso, vertical blue/cyan/white/red/orange/yellow face streaks and all source lighting. No redesign, no extra details, no change to facial effect, no new person. Keep original frontal composition and aspect ratio; shoulders extend to lower edges as in input. Preserve luminous spectral edges but remove pale background halo. This is a transparent texture for a limited-angle 2.5D Three.js hero.

@@ -1,0 +1,8 @@
+Export verification
+- 21.00 seconds, 630 frames, 1920×1080, 30 fps.
+- H.264 video, stereo AAC audio at 48 kHz; MP4 fast-start enabled.
+- Full video/audio decode completed without errors.
+- Original soundtrack: peak -1.51 dBFS, RMS -15.88 dBFS, zero clipped PCM samples.
+- Reviewed stills from every scene and transition before rendering.
+- Settled outro poster replaces frame zero; exported first frame inspected.
+- Source project screenshots, spectral portrait, Inter fonts and palette reused.

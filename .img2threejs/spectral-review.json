@@ -1,0 +1,36 @@
+{
+  "status": "complete",
+  "scope": "User-requested limited-angle 2.5D hero; not a full procedural character pipeline pass",
+  "specification": "spectral-spec.json",
+  "evidence": "../HERO_SPECTRAL_QA.md",
+  "adaptation": "The standard skill checklist was archived as full-model-checklist-not-applicable.json at its full-model pass-transition boundary. It is not claimed to pass full-sculpt, rig, rear-view or export gates.",
+  "passes": [
+    {
+      "name": "source and alpha",
+      "result": "recognizable spectral portrait, transparent cutout, optimized to 86,604 bytes"
+    },
+    {
+      "name": "geometry and material",
+      "result": "Non-planar relief, separate head/bust pivots with inherited face and optical children, three shared-geometry draw passes, camera-compensated neutral source projection"
+    },
+    {
+      "name": "interaction",
+      "result": "All nine pointer positions inspected; differential face/shoulder motion, CTA tracking, click navigation and neutral return verified"
+    },
+    {
+      "name": "edge refinement",
+      "result": "Two-cell transparent guard band prevents ear/jaw contour stair steps under perspective"
+    },
+    {
+      "name": "responsive and production",
+      "result": "four widths visually reviewed, no overflow, build/lint/type and lifecycle tests pass"
+    }
+  ],
+  "limitations": [
+    "relative authored depth, not measured anatomy",
+    "no rear reconstruction",
+    "touch gestures tested in lifecycle harness and browser study with synthetic PointerEvents, not a physical phone",
+    "reduced-motion and WebGL failure tested in lifecycle harness",
+    "no physical mobile frame-rate benchmark"
+  ]
+}

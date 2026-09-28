@@ -1,0 +1,66 @@
+<style>
+  #spectral-portrait-study .portrait-stage { position: relative; width: 100%; height: 480px; overflow: hidden; background: #02030a; touch-action: pan-y pinch-zoom; }
+  #spectral-portrait-study .spectral-human { position: relative; width: min(100%,384px); height: 480px; margin: auto; mask-image: linear-gradient(to bottom,#000 76%,transparent),linear-gradient(to right,transparent,#000 8%,#000 92%,transparent); mask-composite: intersect; }
+  #spectral-portrait-study .spectral-human canvas, #spectral-portrait-study .spectral-fallback { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; pointer-events: none; }
+  #spectral-portrait-study .spectral-fallback { transform: scale(.971); }
+  #spectral-portrait-study canvas { visibility: hidden; }
+  #spectral-portrait-study [data-renderer="three"] canvas { visibility: visible; }
+  #spectral-portrait-study [data-renderer="three"] .spectral-fallback { visibility: hidden; }
+  #spectral-portrait-study[data-mode="still"] canvas { visibility: hidden; }
+  #spectral-portrait-study[data-mode="still"] .spectral-fallback { visibility: visible; }
+  @media(max-width:400px) { #spectral-portrait-study .portrait-stage,#spectral-portrait-study .spectral-human { height:400px; } }
+</style>
+<div id="spectral-portrait-study" data-mode="live">
+  <div class="viz-controls" role="group" aria-label="Portrait comparison">
+    <button class="btn" type="button" data-mode="live" aria-pressed="true">Interactive depth</button>
+    <button class="btn" type="button" data-mode="still" aria-pressed="false">Still portrait</button>
+  </div>
+  <div class="viz-controls" role="group" aria-label="Head direction">
+    <button class="btn" type="button" data-pose="-1">Left</button>
+    <button class="btn" type="button" data-pose="0">Neutral</button>
+    <button class="btn" type="button" data-pose="1">Right</button>
+    <button class="btn" type="button" data-touch="-1">Drag left</button>
+    <button class="btn" type="button" data-touch="1">Drag right</button>
+    <button class="btn" type="button" data-release>Release</button>
+  </div>
+  <div class="portrait-stage" role="img" aria-label="Spectral human portrait. Move the pointer or drag horizontally to turn the whole head.">
+    <div class="spectral-human" aria-hidden="true"><img class="spectral-fallback" src="__TEXTURE__" alt="" draggable="false"></div>
+  </div>
+</div>
+<script type="module">
+import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.186.1/build/three.module.js';
+import { gsap } from 'https://esm.sh/gsap@3.15.0';
+__RELIEF__
+__LAYERS__
+__RENDERER__
+const root = document.getElementById('spectral-portrait-study');
+const stage = root.querySelector('.portrait-stage');
+const portrait = root.querySelector('.spectral-human');
+const cleanup = mountSpectralHuman(portrait, stage);
+const buttons = root.querySelectorAll('button[data-mode]');
+root.querySelectorAll('[data-pose]').forEach(button => button.addEventListener('click', () => {
+  stage.dispatchEvent(new PointerEvent('pointerleave'));
+  const r = stage.getBoundingClientRect();
+  stage.dispatchEvent(new PointerEvent('pointermove', { pointerType:'mouse', clientX:r.left+r.width*(Number(button.dataset.pose)+1)/2,clientY:r.top+r.height/2 }));
+}));
+root.querySelectorAll('[data-touch]').forEach(button => button.addEventListener('click', () => {
+  stage.dispatchEvent(new PointerEvent('pointerleave'));
+  stage.dispatchEvent(new PointerEvent('pointerdown', { pointerType:'touch',pointerId:77,isPrimary:true,clientX:180,clientY:250 }));
+  stage.dispatchEvent(new PointerEvent('pointermove', { pointerType:'touch',pointerId:77,isPrimary:true,clientX:180+110*Number(button.dataset.touch),clientY:225 }));
+}));
+root.querySelector('[data-release]').addEventListener('click', () => {
+  window.dispatchEvent(new PointerEvent('pointerup', {pointerType:'touch',pointerId:77}));
+  stage.dispatchEvent(new PointerEvent('pointerleave'));
+});
+function applyMode(mode) {
+  root.dataset.mode = mode === 'still' ? 'still' : 'live';
+  buttons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.mode === root.dataset.mode)));
+}
+applyMode(window.openai?.widgetState?.modelContent?.mode);
+buttons.forEach(button => button.addEventListener('click', () => {
+  applyMode(button.dataset.mode);
+  window.openai?.setWidgetState({ modelContent: { mode: root.dataset.mode }, privateContent: null }).catch(() => {});
+}));
+window.addEventListener('openai:set_globals', event => applyMode(event.detail?.globals?.widgetState?.modelContent?.mode));
+window.addEventListener('pagehide', cleanup, {once:true});
+</script>

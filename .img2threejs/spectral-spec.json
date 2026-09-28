@@ -1,0 +1,59 @@
+{
+  "name": "Spectral human hero relief",
+  "route": "user-requested limited-angle textured 2.5D mesh",
+  "source": "C:/Users/adeel_utu7nye/Downloads/10625749119185905.jpg",
+  "suitability": "Suitable for frontal relief; not a 360-degree reconstruction.",
+  "observations": {
+    "silhouette": "Organic bust; irregular short hair, visible left-image ear, long dark neck, broad cropped shoulders.",
+    "surface": "Black/navy body with blue rim, vertical cyan/white and warm spectral face streaks; four small white highlights down the center.",
+    "hidden": "Actual nose, eyes, rear skull and shoulders are not measurable behind the optical light. Depth is an authored approximation, not estimated anatomy."
+  },
+  "pipeline": [
+    "preserve approved alpha texture",
+    "stronger landmark-shaped continuous relief",
+    "camera-matched neutral projection",
+    "separate bust and upper-neck head pivot with three inherited face/optical groups",
+    "two surface-bound emission passes",
+    "face-local refraction and chromatic response",
+    "GSAP ticker with unchanged entrance and scroll",
+    "nine-position and four-width browser review"
+  ],
+  "skillAdaptations": {
+    "projection": "Follow projection-first source fidelity; use unlit source radiance, not PBR albedo, so de-lighting would destroy the explicitly required spectral illumination.",
+    "geometry": "User explicitly requests a 2.5D surface, superseding code-only full character, hair generation, rigging, explodable parts, rear turntable and strict full-sculpt factory requirements.",
+    "review": "Review 9 degree head yaw / 4.5 degree pitch, 2.6/1.3 degree bust response and small inherited face/optical additions; 80 percent range for touch/compact screens. No full orbit. Inspect head silhouette as well as face."
+  },
+  "qualityContract": {
+    "critical": [
+      "same recognizable portrait",
+      "no pale rectangle or mask halo",
+      "nonuniform head/face/neck/shoulder depth",
+      "preserved spectral streaks",
+      "readable unchanged hero typography"
+    ],
+    "limits": {
+      "yawDegrees": 9,
+      "pitchDegrees": 4.5,
+      "desktopTriangles": 31360,
+      "compactTriangles": 10240,
+      "desktopDPR": 1.75,
+      "compactDPR": 1.25
+    },
+    "reviewWidths": [
+      1440,
+      1280,
+      768,
+      390
+    ],
+    "failures": [
+      "flat rotating rectangle",
+      "face melting",
+      "head chasing cursor",
+      "broken alpha edge",
+      "touch drag unavailable or vertical scrolling blocked",
+      "missing fallback",
+      "running offscreen",
+      "resource leak"
+    ]
+  }
+}

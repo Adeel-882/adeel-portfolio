@@ -1,0 +1,46 @@
+<style>
+  #launch-study .launch-stage { position:relative; height:440px; overflow:hidden; background:#03040a; color:#f3f0e8; }
+  #launch-study .study-copy { position:absolute; left:6%; top:26%; width:64%; font-family:Arial,sans-serif; font-size:clamp(27px,5vw,52px); line-height:.98; font-weight:700; letter-spacing:-.065em; z-index:1; }
+  #launch-study .study-person { position:absolute; right:-2%; bottom:-9%; height:97%; width:auto; mask-image:linear-gradient(#000 75%,transparent); }
+  #launch-study .launch-splash {position:absolute;inset:0;overflow:hidden;z-index:2;}
+  #launch-study .launch-scene {display:block;width:100%;height:100%;}
+  #launch-study .launch-light,#launch-study .launch-aircraft {opacity:0;}
+  @media(max-width:440px) { #launch-study .study-copy{top:14%;width:88%;} #launch-study .study-person{height:72%;} }
+</style>
+<div id="launch-study">
+  <div class="viz-controls">
+    <button class="btn" type="button" data-play>Replay launch</button>
+    <label class="form-label">Inspect moment <input class="form-range" aria-label="Inspect launch moment" type="range" min="0" max="2.12" step="0.01" value="1.35"></label>
+  </div>
+  <div class="launch-stage" role="img" aria-label="Black supersonic silhouette unzipping a cobalt screen along curved spectral trails to reveal the portfolio.">
+    <div class="study-copy">BUSINESS,<br>ON AUTOPILOT.</div>
+    <img class="study-person" src="__PORTRAIT__" alt="" />
+    __SPLASH__
+  </div>
+</div>
+<script type="module">
+import {gsap} from 'https://esm.sh/gsap@3.15.0';
+__GEOMETRY__
+__TIMELINE__
+const root=document.getElementById('launch-study');
+const splash=root.querySelector('.launch-splash');
+const slider=root.querySelector('input');
+const reduce=matchMedia('(prefers-reduced-motion: reduce)');
+let timeline;
+function build(time=1.35) {
+  timeline?.revert();
+  timeline=createLaunchTimeline(splash,()=>{},()=>{},reduce.matches);
+  timeline.pause(Math.min(time,timeline.duration()),false);
+}
+function restore(state) { const time=Number(state?.modelContent?.time ?? 1.35); slider.value=String(time); build(time); }
+restore(window.openai?.widgetState);
+slider.addEventListener('input',()=>timeline.pause(Number(slider.value),false));
+slider.addEventListener('change',()=>window.openai?.setWidgetState({modelContent:{time:Number(slider.value)},privateContent:null}).catch(()=>{}));
+root.querySelector('[data-play]').addEventListener('click',()=>{
+  build(0); timeline.eventCallback('onUpdate',()=>{slider.value=String(timeline.time());}); timeline.play();
+});
+window.addEventListener('openai:set_globals',event=>restore(event.detail?.globals?.widgetState));
+const observer=new ResizeObserver(()=>build(Number(slider.value))); observer.observe(root.querySelector('.launch-stage'));
+reduce.addEventListener('change',()=>build(0));
+window.addEventListener('pagehide',()=>{timeline?.kill();observer.disconnect();},{once:true});
+</script>
