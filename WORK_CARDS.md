@@ -27,3 +27,6 @@ Data lives in `src/data/screenshot-projects.ts`, `src/data/projects.ts` and `src
 - Browser visual and interaction checks are recorded in the task response.
 
 - Browser checked at 1440, 1280, 768 and 390px: no horizontal overflow; mobile cards tightened, native scroll advances cards and releases into System Approach. Workflow filter returns the three remaining workflow projects. Console reported no warnings/errors. Screenshot: work/project-review/reviews-final.png. Native touch and OS reduced-motion settings were not exercised on a physical device.
+
+## Complete image audit
+All 35 supplied PNGs now appear in their related galleries: Company Command Center 7, Daily Fitness 6, Voice & text bot 5, Client & Admin Portal 11, MGC Sales Assistant 2, Information Mail 2, Personalized Outreach 2. Includes spreadsheets, chat and confirmation screens, sign-in screens and supplied portal introduction images. Every image opens full-size.

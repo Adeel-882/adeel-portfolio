@@ -25,10 +25,12 @@ export const screenshotProjects: Project[] = [
     technologies: [],
     outcome: 'A single interface for moving from company-wide performance to the teams behind it.',
     gallery: gallery('company-dashboard', [
+      [1, 'Company dashboard sign-in'],
       [2, 'Company performance overview'],
       [3, 'Division performance'],
       [4, 'Team performance'],
       [5, 'Appointment trends and activity'],
+      [6, 'Employee docks and fines overview'],
       [7, 'Reporting data health'],
     ]),
   },
@@ -84,7 +86,10 @@ export const screenshotProjects: Project[] = [
     outcome: 'Routine enquiries, bookings and confirmation emails handled in one automated flow.',
     gallery: gallery('leadsedge-voice-workflow', [
       [1, 'Voice enquiry and booking workflow in n8n'],
+      [2, 'Appointment records and conversation details in Google Sheets'],
       [3, 'LeadsEdge website with the voice assistant entry point'],
+      [4, 'Chatbot conversation from enquiry to appointment booking'],
+      [5, 'Appointment confirmation email on mobile'],
     ]),
   },
   {
@@ -108,10 +113,14 @@ export const screenshotProjects: Project[] = [
     technologies: [],
     outcome: 'Clear spaces for project delivery and client communication.',
     gallery: gallery('client-portal', [
+      [1, 'Client-side portal introduction'],
+      [2, 'Secure portal sign-in'],
       [3, 'Client home and project attention items'],
       [4, 'Client conversations'],
       [5, 'Client meeting scheduling'],
+      [6, 'Admin-side portal introduction'],
       [7, 'Admin project overview'],
+      [8, 'Admin people directory'],
       [9, 'Reusable project templates'],
       [10, 'Admin meeting overview'],
       [11, 'Admin conversations'],

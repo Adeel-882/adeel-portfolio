@@ -3,13 +3,13 @@
 const fs = require('node:fs');
 const sharp = require('sharp');
 const sources = {
-  'company-dashboard': ['Dashboard for Company', [2, 3, 4, 5, 7]],
+  'company-dashboard': ['Dashboard for Company', [1, 2, 3, 4, 5, 6, 7]],
   'gym-app': ['GYM app', [1, 2, 3, 4, 5, 6]],
   'information-mail': ['Information Mail', [1, 2]],
   'mgc-sales-assistant': ['MGC Sales Assistant', [1, 2]],
   'personalization': ['Personalization', [1, 2]],
-  'client-portal': ['Portal', [3, 4, 5, 7, 9, 10, 11]],
-  'leadsedge-voice-workflow': ['Voice workflow for Leadsedge', [1, 3]],
+  'client-portal': ['Portal', [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]],
+  'leadsedge-voice-workflow': ['Voice workflow for Leadsedge', [1, 2, 3, 4, 5]],
 };
 (async () => {
   let bytes = 0;
