@@ -2001,6 +2001,28 @@ button {
   margin-top: 24px;
   font-size: 13px;
 }
+.contact-social-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 16px;
+}
+.contact-social-button {
+  gap: 12px;
+  padding: 14px 18px;
+  min-height: 48px;
+  border: 1px solid var(--color-border-strong);
+  border-radius: 6px;
+  background: var(--color-surface);
+}
+.contact-social-button > svg {
+  flex-shrink: 0;
+  color: var(--color-flare);
+}
+.contact-social-button:hover {
+  border-color: var(--color-flare);
+  background: var(--color-surface-elevated);
+}
 .contact-email > a {
   border-bottom: 1px solid var(--color-border);
   overflow-wrap: anywhere;

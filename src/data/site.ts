@@ -11,6 +11,8 @@ export const site = {
   ],
   // Add verified public details here. Empty values never produce dead links.
   email: 'adeelrajpoo882@gmail.com',
+  whatsapp: 'https://wa.me/923395253217',
+  instagram: 'https://www.instagram.com/zyora_x_adeel?stkn=OGs0dGphMXA4ODIx',
   linkedin: '', // [Add LinkedIn URL]
   website: '', // [Add production URL]
   intro: {

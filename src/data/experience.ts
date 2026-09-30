@@ -1,6 +1,5 @@
 export const experience = [
   {
-    year: 'SEP 2025 — MAY 2026',
     role: 'Full-Stack Developer',
     organization: 'Student Clinical Wellness Platform · BIIT',
     description:
@@ -8,7 +7,6 @@ export const experience = [
     published: true,
   },
   {
-    year: '2025',
     role: 'AI Automation Developer',
     organization: 'Voice agents & conversational systems',
     description:
@@ -16,7 +14,6 @@ export const experience = [
     published: true,
   },
   {
-    year: '2025',
     role: 'Web Development & Digital Solutions',
     organization: 'Business websites & integrations',
     description:
@@ -24,7 +21,6 @@ export const experience = [
     published: true,
   },
   {
-    year: 'ONGOING',
     role: 'Digital Marketing & Growth',
     organization: 'Espace.homes · Elleven.pk',
     description:

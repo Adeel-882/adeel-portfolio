@@ -1,7 +1,7 @@
 'use client';
 import Image from 'next/image';
 import { useState } from 'react';
-import { ArrowUpRight, ArrowUp, Copy, Check } from 'lucide-react';
+import { ArrowUpRight, ArrowUp, Copy, Check, MessageCircle, Camera } from 'lucide-react';
 import { site } from '@/data/site';
 import { SectionLabel } from './SectionLabel';
 export function Contact() {
@@ -54,6 +54,30 @@ export function Contact() {
                 ? 'Email copied.'
                 : ''}
           </span>
+          <div className="contact-social-links" aria-label="More ways to connect">
+            <a
+              className="button contact-social-button"
+              href={site.whatsapp}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Chat on WhatsApp at +92 339 5253217"
+            >
+              <MessageCircle size={19} aria-hidden="true" />
+              WhatsApp
+              <ArrowUpRight size={17} aria-hidden="true" />
+            </a>
+            <a
+              className="button contact-social-button"
+              href={site.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram: zyora_x_adeel"
+            >
+              <Camera size={19} aria-hidden="true" />
+              Instagram
+              <ArrowUpRight size={17} aria-hidden="true" />
+            </a>
+          </div>
         </div>
         <div className="contact-art">
           <div className="envelope-pointer">

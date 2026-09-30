@@ -25,7 +25,6 @@ export function Background() {
                 .map((x) => (
                   <article className="timeline-entry" key={x.role}>
                     <span className="motion-divider" aria-hidden="true" />
-                    <span className="micro">{x.year}</span>
                     <h4>{x.role}</h4>
                     <p>{x.organization}</p>
                     <p>{x.description}</p>
