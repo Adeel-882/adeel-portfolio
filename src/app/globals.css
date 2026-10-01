@@ -2005,23 +2005,81 @@ button {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
-  margin-top: 16px;
+  margin-top: 20px;
 }
-.contact-social-button {
+.contact .contact-social-button {
   gap: 12px;
-  padding: 14px 18px;
-  min-height: 48px;
-  border: 1px solid var(--color-border-strong);
-  border-radius: 6px;
-  background: var(--color-surface);
+  min-width: 0;
+  flex: 1 1 250px;
+  max-width: 310px;
+  padding: 16px;
+  min-height: 80px;
+  border: 1px solid var(--social-border);
+  border-radius: 14px;
+  background: var(--social-background);
+  color: var(--color-text);
+  transition:
+    background 0.2s,
+    border-color 0.2s;
+}
+.contact-whatsapp {
+  --social-border: #25d36666;
+  --social-background: #10231c;
+  --social-hover: #163527;
+  --social-accent: #45e084;
+}
+.contact-instagram {
+  --social-border: #dd5b9d66;
+  --social-background: #251624;
+  --social-hover: #362033;
+  --social-accent: #f58abb;
+}
+.contact-brand-icon {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  background: #25d366;
+  color: #072512;
+}
+.contact-instagram .contact-brand-icon {
+  background: linear-gradient(35deg, #ffb64b, #df306f 45%, #793ee8);
+  color: #fff;
+}
+.contact-social-copy {
+  display: grid;
+  flex: 1;
+  gap: 5px;
+  text-align: left;
+}
+.contact-social-copy strong {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+.contact-social-copy > span {
+  font-size: 11px;
+  color: var(--color-text-secondary);
+  letter-spacing: 0;
 }
 .contact-social-button > svg {
   flex-shrink: 0;
-  color: var(--color-flare);
+  color: var(--social-accent);
 }
-.contact-social-button:hover {
-  border-color: var(--color-flare);
-  background: var(--color-surface-elevated);
+.contact .contact-social-button:hover {
+  border-color: var(--social-accent);
+  background: var(--social-hover);
+}
+.contact-social-button:hover .contact-brand-icon svg {
+  transform: none;
+}
+@media (max-width: 640px) {
+  .contact .contact-social-button {
+    flex-basis: 100%;
+    max-width: none;
+  }
 }
 .contact-email > a {
   border-bottom: 1px solid var(--color-border);
