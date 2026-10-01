@@ -81,10 +81,15 @@ export function Motion({ children }: { children: React.ReactNode }) {
           };
           const hero = q('.hero')[0];
           let releaseIntro: (() => void) | undefined;
-          if (!introduced.current && window.scrollY < 20 && !window.location.hash) {
+          if (
+            !introduced.current &&
+            !root.current?.closest('[data-view-changed="true"]') &&
+            window.scrollY < 20 &&
+            !window.location.hash
+          ) {
             const intro = gsap
               .timeline({
-                paused: !!q('.launch-splash:not([data-phase="released"])')[0],
+                paused: !!document.querySelector('.launch-splash:not([data-phase="released"])'),
                 defaults: { ease: 'power3.out' },
               })
               .from(

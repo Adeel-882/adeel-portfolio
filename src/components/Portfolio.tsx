@@ -10,11 +10,9 @@ import { SectionLabel } from './SectionLabel';
 import { site } from '@/data/site';
 import { Motion } from './Motion';
 import { PortfolioBackground } from './PortfolioBackground';
-import { SplashLaunch } from './SplashLaunch';
 export function Portfolio() {
   return (
     <Motion>
-      <SplashLaunch />
       <PortfolioBackground />
       <Header />
       <main id="main">
