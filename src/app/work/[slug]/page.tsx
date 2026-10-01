@@ -63,11 +63,13 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
             {(project.cover
               ? [
                   ['The idea', project.problem],
+                  ['The challenge', project.challenge],
                   ['The system', project.system],
                   ['What I built', project.build],
                   ...(project.technologies.length
                     ? [['Tools', project.technologies.join(' / ')]]
                     : []),
+                  ['The outcome', project.outcome],
                 ]
               : [
                   ['Overview', project.description],

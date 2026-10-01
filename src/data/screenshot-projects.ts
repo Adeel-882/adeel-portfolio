@@ -3,7 +3,7 @@ import type { Project } from './projects';
 const gallery = (slug: string, captions: [number, string][]) =>
   captions.map(([frame, alt]) => ({ src: `/projects/${slug}/${frame}-focus.webp`, alt }));
 
-// Descriptions are grounded in the supplied screens; no unverified results or stack claims.
+// Project details come from the owner's supplied descriptions and screenshots.
 export const screenshotProjects: Project[] = [
   {
     slug: 'company-dashboard',
@@ -17,13 +17,25 @@ export const screenshotProjects: Project[] = [
     cover: '/projects/company-dashboard/2-focus.webp',
     description: 'Company performance, team activity and reporting in one clear view.',
     role: 'Dashboard development',
-    problem: 'Bring company and team reporting into a shared overview.',
-    challenge: 'Make division-level detail easy to reach without crowding the main view.',
+    problem:
+      'LeadsEdge reported sales, appointments, leads and other updates across multiple Slack channels. Managers needed a simple way to understand company performance without manually checking each channel.',
+    challenge:
+      'Turn scattered reports into reliable metrics, detect missing or incorrectly mapped records, and credit activity to the employee who actually performed it—even when the work falls outside their main role.',
     system:
-      'An executive overview connects company metrics, division performance, team reporting and data health.',
-    build: 'Built views for appointments, sales, revenue, team performance and reporting status.',
-    technologies: [],
-    outcome: 'A single interface for moving from company-wide performance to the teams behind it.',
+      'The executive dashboard connects directly with Slack, processes reported updates and stores them in PostgreSQL. Those records become business metrics for sales, revenue, appointments, leads, team performance and employee activity.',
+    build:
+      'Built secure login, date filters, team and employee drill-downs, live Slack event tracking and historical data sync. A dedicated data-health view helps managers find missing records and mapping issues before they affect reporting.',
+    technologies: [
+      'Next.js',
+      'TypeScript',
+      'PostgreSQL',
+      'Drizzle ORM',
+      'Slack API',
+      'Supabase',
+      'Vercel',
+    ],
+    outcome:
+      'A centralized management view that turns everyday Slack reporting into real-time business intelligence, with a clear path from company-wide results to the people and activity behind them.',
     gallery: gallery('company-dashboard', [
       [1, 'Company dashboard sign-in'],
       [2, 'Company performance overview'],
@@ -46,14 +58,17 @@ export const screenshotProjects: Project[] = [
     cover: '/projects/gym-app/1-focus.webp',
     description: 'Meals, workouts and progress, built around the everyday routine.',
     role: 'Application development',
-    problem: 'Keep the daily fitness routine easy to follow in one place.',
-    challenge: 'Connect nutrition, training and progress without overwhelming a small screen.',
+    problem:
+      'GainTrack turns a coach-written weight-gain plan into a daily routine for someone working night shifts. It brings meals, training, groceries and progress together to make consistency easier.',
+    challenge:
+      'Keep a detailed plan practical on a small screen while maintaining smooth scrolling. Testing revealed that per-card blur effects and complex animations were too expensive, so I simplified them while preserving the visual style.',
     system:
-      'A mobile interface brings together meal planning, exercise logging, grocery lists and progress tracking.',
+      'A React Native app built with Expo combines scheduled meals, workout logging, grocery checklists and scheduled local reminders. Data stays on the device, with no account or backend required.',
     build:
-      'Created daily calorie and protein views, workout checklists, meal schedules and weekly weight check-ins.',
-    technologies: [],
-    outcome: 'A connected daily view of what to eat, what to train and how progress is changing.',
+      'Built meal history, workout completion and weight-used tracking, gym streaks and weight charts. The interface pairs a dark theme with frosted-glass cards, purple and teal accents, and restrained animations, backed by local data persistence and notification scheduling.',
+    technologies: ['React Native', 'Expo'],
+    outcome:
+      'A focused personal tracking tool that connects a detailed fitness plan with everyday actions, making nutrition, training and progress easier to follow around a night-shift schedule.',
     gallery: gallery('gym-app', [
       [1, 'Daily nutrition and workout overview'],
       [2, 'Daily meal schedule'],
@@ -76,14 +91,17 @@ export const screenshotProjects: Project[] = [
     description:
       'A voice and chat assistant that answers business enquiries, books appointments and sends confirmation emails, automating routine customer support.',
     role: 'AI automation development',
-    problem: 'Connect an incoming lead conversation to the next step in the sales process.',
-    challenge: 'Carry information between the voice experience, booking tools and follow-up steps.',
+    problem:
+      'Turn AI conversations with prospects into confirmed appointments without manual scheduling or follow-up administration.',
+    challenge:
+      'Validate each request, check for calendar conflicts and enforce controlled appointment capacity so an automated conversation cannot create an overbooking.',
     system:
-      'An n8n workflow connects a webhook, branching logic, calendar actions, lead records and email.',
+      'An ElevenLabs conversational agent collects the prospect’s details and preferred meeting time, then passes them into n8n. The workflow validates the request, checks Google Calendar and determines whether the requested slot is available.',
     build:
-      'Built voice and chat conversations that provide business information, schedule appointments and send confirmation emails.',
-    technologies: ['n8n', 'Webhooks', 'Google Calendar', 'Google Sheets', 'Gmail'],
-    outcome: 'Routine enquiries, bookings and confirmation emails handled in one automated flow.',
+      'Connected voice and chat enquiries to the booking workflow. Once a booking is confirmed, the system creates the calendar event, sends the prospect a confirmation email and logs the appointment in Google Sheets for tracking and follow-up.',
+    technologies: ['ElevenLabs', 'n8n', 'Webhooks', 'Google Calendar', 'Google Sheets', 'Gmail'],
+    outcome:
+      'An end-to-end conversation-to-booking system that removes manual scheduling, reduces response time and gives the sales team structured appointment records from AI conversations.',
     gallery: gallery('leadsedge-voice-workflow', [
       [1, 'Voice enquiry and booking workflow in n8n'],
       [2, 'Appointment records and conversation details in Google Sheets'],
@@ -104,14 +122,26 @@ export const screenshotProjects: Project[] = [
     cover: '/projects/client-portal/3-focus.webp',
     description: 'Projects, messages and meetings, connected across client and admin views.',
     role: 'Portal development',
-    problem: 'Give clients and administrators a shared place to coordinate project work.',
-    challenge: 'Keep client tasks simple while providing administrators a wider operational view.',
+    problem:
+      'Leadsedge Portal gives a real estate lead-generation business one place to manage clients, projects, lead assignments, feedback, meetings, emails and activity. Each realtor needs a secure portal limited to their own data.',
+    challenge:
+      'Give administrators a complete operational view while enforcing strict client isolation. I also optimized the architecture to reduce response times and unnecessary database calls.',
     system:
-      'Dedicated client and admin views organize project status, messages, meetings and reusable templates.',
+      'A full-stack client and lead management platform combines passwordless authentication with dedicated admin and realtor views. Supabase row-level security (RLS) restricts which records each client can access, while Realtime supports messaging and notifications.',
     build:
-      'Created project overviews, messaging screens, meeting scheduling and an administrative project workspace.',
-    technologies: [],
-    outcome: 'Clear spaces for project delivery and client communication.',
+      'Built CRM-style client profiles, project and lead management, real-time messaging, notifications and automated feedback workflows. Meeting scheduling connects with Google Calendar, and email automation uses Resend to keep communication within the same operational flow.',
+    technologies: [
+      'React',
+      'TypeScript',
+      'Vinext',
+      'Supabase',
+      'PostgreSQL',
+      'Realtime',
+      'Resend',
+      'Google Calendar API',
+    ],
+    outcome:
+      'A connected workspace for running client operations, with secure self-service access for realtors and a faster, more efficient architecture for the team managing them.',
     gallery: gallery('client-portal', [
       [1, 'Client-side portal introduction'],
       [2, 'Secure portal sign-in'],
@@ -138,13 +168,17 @@ export const screenshotProjects: Project[] = [
     cover: '/projects/mgc-sales-assistant/2-focus.webp',
     description: 'Property questions and structured lead scoring in a focused sales workspace.',
     role: 'Application development',
-    problem: 'Help a sales team access project information and assess incoming enquiries.',
-    challenge: 'Place document-backed answers and lead qualification side by side.',
+    problem:
+      'MGC’s real estate sales team needed reliable answers across project documents and a better way to decide which leads to contact first. I brought document assistance and lead prioritization into one lightweight local application.',
+    challenge:
+      'Keep answers grounded in supplied documents and avoid data leakage in lead scoring. The assistant resolves conflicting information using document dates; model training excludes identifiers and information unavailable when a lead first arrives.',
     system:
-      'A document assistant sits alongside a structured lead-scoring form covering budget, timing and intent.',
-    build: 'Created a property-information question interface and a lead qualification workspace.',
-    technologies: [],
-    outcome: 'One focused screen for looking up information and evaluating a lead.',
+      'The document assistant uses brochures, price lists and booking policies, showing sources alongside each response. It calculates cumulative pricing premiums and avoids unsupported details. Beside it, a logistic regression model scores leads using patterns learned from 9,000 deduplicated historical records.',
+    build:
+      'Built a responsive, MGC-branded dashboard with Python and FastAPI, Jinja templates, and a simple local setup. The application combines document questions and answers with a structured lead-scoring form, supported by pandas and scikit-learn.',
+    technologies: ['Python', 'FastAPI', 'Jinja', 'pandas', 'scikit-learn'],
+    outcome:
+      'The lead model achieved an Average Precision of 0.156 against a 0.069 baseline, measuring how effectively it ranks relevant leads. All 19 project tests passed, covering key document answers, scoring and application behavior.',
     gallery: gallery('mgc-sales-assistant', [
       [1, 'Document assistant and lead qualification form'],
       [2, 'Property answer displayed beside the lead-scoring form'],
@@ -186,14 +220,17 @@ export const screenshotProjects: Project[] = [
     cover: '/projects/personalization/1-focus.webp',
     description: 'A connected workflow for preparing tailored outreach from lead information.',
     role: 'Workflow automation development',
-    problem: 'Bring lead context into outreach preparation.',
-    challenge: 'Keep research, processing and output organized across multiple workflow steps.',
+    problem:
+      'Preparing relevant website-development outreach requires researching each business by hand. This n8n system automates that research and creates short, specific opening lines for cold-email campaigns.',
+    challenge:
+      'Keep personalization grounded in actual business information, including when a lead has no website. The workflow switches to a missing-online-presence angle instead of inventing details.',
     system:
-      'An n8n automation connects lead inputs with processing steps and a spreadsheet output.',
+      'The workflow reads business names, email addresses and website URLs from Google Sheets. For leads with websites, it fetches page content and links, reviews key pages and identifies signals such as service structure, calls-to-action, enquiry paths and overall website quality.',
     build:
-      'Created a multi-step personalization workflow with branching and connected data processing.',
-    technologies: ['n8n', 'Google Sheets'],
-    outcome: 'A structured workflow for preparing outreach with context.',
+      'Connected website research to Gemini to generate a concise icebreaker based on the findings. A separate branch handles businesses without websites. Each result is written back to the original lead sheet, ready for use in a cold-email campaign.',
+    technologies: ['n8n', 'Google Sheets', 'Gemini'],
+    outcome:
+      'A repeatable way to prepare researched outreach at scale, reducing manual website analysis while keeping each opening line tied to real business context.',
     gallery: gallery('personalization', [
       [1, 'Multi-step personalization workflow in n8n'],
       [2, 'Outreach spreadsheet with personalized opening lines'],
